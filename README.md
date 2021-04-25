@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+Bingo game constructed in the time limit of 4 hours.
+Responsiveness, modularity and scalable functionality are guaranteed, unique design and creativity is quite barebones since time was short.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I treated this project like a real request from an external client, therefore also thinking of future possible last minute requests which requires a robust and scalable code base.
+Description of how I worked my way through:
+# 1. Analyze given task and note planned approach
+Looking up bingo rules and brainstorming what components and architecture will be needed.
+ 
+The game will require a *Tile* and a *BingoBoard* component - BingoBoard is the mother flagship that controls all state and functions.
 
-## Available Scripts
+A Tile consists of a value, marked and disabled property. Upon clicking a tile it should be marked and disabled to avoid further function invocations.
+The BingoBoard controls the state of these Tiles and renders them, also providing them the algorithm to check for Bingo and the celebration state (controlled state approach instead of uncontrolled).
 
-In the project directory, you can run:
+As soon as a tile is clicked and the callback function/algorithm detects Bingo (the algorithm should also be working with grids of different sizes), a nice animation should start.
+The animation should take place globally not in every Tile but on a global scale - The whole grid should start levitating with some super mario speed trail effects and dancing while simultaneously all Tiles are changing their colors back and forth for 3 seconds (beware fellow epileptics!). Global scale requires a context/provider approach and is therefore scalable (in case additional client requests like "I want the footer/navbar to dance too" come in).
 
-### `yarn start`
+The Tile in the middle of the board should be a special tile in order to not be restricted by the structure of normal Tiles -> scalability (in case additional requests like "The special tile should be a video container" come in).
+I had a invincibility providing super mario star in mind that is constantly blinking.
+The content of theses Tiles should not be typical sentences you hear during meetings but meme and pop culture references (examples: "may the force be with you", "bazinga", "thanos was right").
+The order of these tiles should be shuffled on every refresh.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Stack and Architecture:
+React, Emotion (due to state based styling), typescript.
+Context Provider and [atomic design](https://atomicdesign.bradfrost.com/table-of-contents/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# 2. Implementation order and time logs
+- Brainstorming and analysis of necessary stack and algorithms (1 1/2 hours).
+- Grid and responsiveness first. (1/2 hours).
+- BingoBoard and Tile skeleton. (10 minutes).
+- BingoBoard state and functions. (20 minutes).
+- Scalable Bingo algorithm which could be used for any random grid size (1 1/2 hours).
 
-### `yarn test`
+# 3. Result and shortcomings
+- Planned stack and architecture was used.
+- Grid is responsive but only contains placeholders since time was missing for gathering 24 pop culture / meme references.
+- Bingo algorithm works and is scalable with any grid size.
+- Normal pre marked centered (special) Tile instead of a fancy glowing star.
+- No animation, just alert box instead due to time running out.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 4. Mistakes
+- Too much time was invested in brainstorming the project and thinking of ways how to project my personality/hobbies into it. While this process should NEVER be skipped imho it is sometimes more time efficient to just do stuff and learn on the go, especially if it is a task you have never done before (since my main profession is web development instead of software development I actually haven't coded with 2 dimensional arrays and didn't need a broader knowledge of algorithms yet).
+- Neglected learning algorithms & data structure for too long - it shows in this project since they took most of the time.
+- When restricted with such a short time to develop it is not a good idea to try making everything scalable to defend against famous last minute changing requests.
+Therefore the algorithm for checking for bingo should have been hardcoded (similiar to the [official react docu](https://reactjs.org/tutorial/tutorial.html#declaring-a-winner)) and the assumption of a middle Tile being able to be very different from the rest should have been dropped.
 
-### `yarn build`
+# 5. Conclusion
+Broaden my knowledge of existing animation libraries to support my wild/stylish fantasies in a quick and easy way.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Dive deeper into algorithms & data structure lessons (even though they are rarely needed for building classic corporate websites or components).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+... also dive deeper into meme culture to easily whip out at least 24 funny references/citations! ;)
